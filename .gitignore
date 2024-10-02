@@ -36,4 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 #keys
-config.js
+config.mjs
+service_key.json

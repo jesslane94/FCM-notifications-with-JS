@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { isSupported, getMessaging } from "firebase/messaging";
+import { getFirestore } from "firebase/firestore";
 // import { getAnalytics } from "firebase/analytics";
-import { getMessaging } from "firebase/messaging";
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { firebaseConfig, vapidKey } from '../my-app/config';
+import { firebaseConfig } from '../config.mjs';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
+export const app = initializeApp(firebaseConfig);
+export const messaging = async () => await isSupported() && getMessaging(app);
+export const db = getFirestore(app);
 // const analytics = getAnalytics(app);
